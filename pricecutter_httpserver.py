@@ -68,7 +68,6 @@ class PriceCutterHttpHandler(BaseHTTPRequestHandler):
         super().__init__(*args, **kwargs)
         
     def do_GET(self):
-        print("DEBUG: Request arrived")
         if "/favicon.ico" in self.path:
         # Send the favicon response
             self.send_response(200)
@@ -86,7 +85,6 @@ class PriceCutterHttpHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(f.read())
                 return
-        print("DEBUG Processing request")
         self.send_response(200)
         self.send_header("Content-Type", "text/html")
         self.end_headers()
@@ -136,7 +134,6 @@ class PriceCutterHttpHandler(BaseHTTPRequestHandler):
              .replace("$MODES", MODES)
 
         self.wfile.write(body.encode())
-        print("DEBUG RESPONSE sent")
 
 
 def start_pricecutter_httpserver(porssari):
